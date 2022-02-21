@@ -1,22 +1,19 @@
 <?php
 $dados = $_POST;
-echo 'entrou';
-$conn = pg_connect('host=localhost port=5432 dbname=carros user=postgres password=postgres');
+$conn = pg_connect('host=postgres dbname=carros user=postgres password=postgres');
 
 $result = pg_query($conn, 'SELECT max(id) as next FROM carro');
-echo $result;
 $row = pg_fetch_assoc($result);
-echo $row;
 $next = (int) $row['next'] + 1;
 
-$sql = "INSERT INTO carro (id, id_marca, id_modelos,
+$sql = "INSERT INTO carro (id, id_marca, id_modelo,
            ano, km)
        VALUES ( '{$next}',
                 '{$dados['id_marca']}',
-                '{$dados['id_modelos']}',
+                '{$dados['id_modelo']}',
                 '{$dados['ano']}',
                 '{$dados['km']}')";
-
+echo $sql;
 $result = pg_query($conn, $sql);
 
 if ($result)
@@ -25,7 +22,7 @@ if ($result)
 }
 else
 {
-    print 'erro123';
+    print 'erro';
 }
 
 pg_close($conn);

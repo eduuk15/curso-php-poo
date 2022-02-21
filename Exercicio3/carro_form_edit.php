@@ -8,7 +8,7 @@
         <?php
             if (!empty($_GET['id']))
             {
-                $conn = pg_connect('host=localhost port=5432 dbname=carros user=postgres password=postgres');
+                $conn = pg_connect('host=postgres dbname=carros user=postgres password=postgres');
                 $id = (int) $_GET['id'];
                 $result = pg_query($conn, "SELECT * FROM carro WHERE id='{$id}'");
                 $row = pg_fetch_assoc($result);

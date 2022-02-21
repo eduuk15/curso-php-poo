@@ -18,7 +18,7 @@
     </thead>
     <tbody>
         <?php
-            $conn = pg_connect('host=localhost port=5432 dbname=carros user=postgres password=postgres');
+            $conn = pg_connect('host=postgres dbname=carros user=postgres password=postgres');
             $result = pg_query($conn, 'SELECT * from carro ORDER BY id');
             
             while ($row = pg_fetch_assoc($result))

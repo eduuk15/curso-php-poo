@@ -1,7 +1,7 @@
 <?php
 function lista_modelos_carro( $id_modelo = null )
 {
-    $conn = pg_connect('host=localhost port=5432 dbname=carros user=postgres password=postgres');
+    $conn = pg_connect('host=postgres dbname=carros user=postgres password=postgres');
 
     $output = '';
     $result = pg_query($conn, 'SELECT id, nome FROM modelos');
